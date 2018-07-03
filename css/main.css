@@ -10,7 +10,7 @@ form{
 }
 input{
 	display: inline-block;
-	margin: 20 0px;
+	margin: 20px 0;
 	width: 60%;
 	height: 40px;
 	border: none;

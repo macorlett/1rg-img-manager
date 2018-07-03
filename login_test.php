@@ -6,8 +6,12 @@
 	include('php/config.php');
 	session_start();
 
+	print 'starting session;';
+
 	if($_SERVER['REQUEST_METHOD']=="POST"){
 		$user=mysqli_real_escape_string($db,'macorlett');
+
+		print 'checking user;';
 
 		$sql="SELECT passwd FROM user_auth WHERE user = '$user'";
 		$result=mysqli_query($db,$sql);

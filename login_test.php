@@ -6,12 +6,8 @@
 	include('php/config.php');
 	session_start();
 
-	print 'starting session;';
-
 	//if($_SERVER['REQUEST_METHOD']=="POST"){
 		$user=mysqli_real_escape_string($db,'macorlett');
-
-		print 'checking user;';
 
 		$sql="SELECT passwd FROM user_auth WHERE user = '$user'";
 		$result=mysqli_query($db,$sql);
@@ -22,7 +18,14 @@
 		if($count==1){
 			$dbpasswd=$row['passwd'];
 			$salt=substr($dbpasswd,0,32);
+
+			print $salt."\n";
+
 			$passwd=hash('sha256', $salt.'bob');
+
+			print $passwd."\n";
+
+			Print $dbpasswd;
 
 			if($salt.$passwd==$dbpasswd){
 				print "working! login worked!";

@@ -8,7 +8,7 @@
 
 	print 'starting session;';
 
-	if($_SERVER['REQUEST_METHOD']=="POST"){
+	//if($_SERVER['REQUEST_METHOD']=="POST"){
 		$user=mysqli_real_escape_string($db,'macorlett');
 
 		print 'checking user;';
@@ -33,5 +33,5 @@
 		}else{
 			print "failed! row count was wrong :(";
 		}
-	}
+	//}
 ?>

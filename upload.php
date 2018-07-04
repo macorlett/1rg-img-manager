@@ -2,6 +2,7 @@
 	include('config.php');
 	include('session.php');
 
+	$db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE) or die("Server Error");
 
 	if($_SERVER['REQUEST_METHOD']=="POST"){
 		

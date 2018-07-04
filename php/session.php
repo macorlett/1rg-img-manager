@@ -1,5 +1,5 @@
 <?php
-   //include('config.php');
+   include('config.php');
    session_start();
    
    $user= $_SESSION['user'];

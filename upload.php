@@ -51,11 +51,7 @@
 				// image uploaded fine
 
 				$sql="insert into UPLOADED_IMAGES (date,name,location) values (".time().",".$target_name.",".$dir.")";
-				if($db->query($sql)===TRUE){
-					// added to DB
-				}else{
-					// failed to adde to DB
-				}
+				$result=mysqli_query($db,$sql);
 			}else{
 				// failed to upload image
 			}

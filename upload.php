@@ -53,8 +53,10 @@
 				$sql="insert into UPLOADED_IMAGES (date,name,location) values (".time().",".$target_name.",".$dir.")";
 				if($db->query($sql)===TRUE){
 					// added to DB
+					echo "New record created successfully";
 				}else{
 					// failed to adde to DB
+					echo "Error: " . $sql . "<br>" . $conn->error;
 				}
 			}else{
 				// failed to upload image

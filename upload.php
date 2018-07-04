@@ -42,7 +42,7 @@
 		}
 
 		// allow only certain file types (jpeg,jpg,png)
-		if($fileType!="jpg"&&fileType!="jpeg"&&fileType!="png"){
+		if($fileType!="jpg"&&$fileType!="jpeg"&&$fileType!="png"){
 			$isValid=0;
 		}
 

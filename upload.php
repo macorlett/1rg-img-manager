@@ -1,4 +1,5 @@
 <?php
+	include('config.php');
 	include('session.php');
 
 
@@ -51,7 +52,11 @@
 				// image uploaded fine
 
 				$sql="insert into UPLOADED_IMAGES (date,name,location) values (".time().",".$target_name.",".$dir.")";
-				$result=mysqli_query($db,$sql);
+				if($db->query($sql)===TRUE){
+					// added to DB
+				}else{
+					// failed to adde to DB
+				}
 			}else{
 				// failed to upload image
 			}

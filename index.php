@@ -21,6 +21,7 @@
 
 			if($salt.$passwd==$dbpasswd){
 				$_SESSION['user']=$user;
+				header("location: upload.php");
 			}else{
 				//error passwd didn't match
 			}

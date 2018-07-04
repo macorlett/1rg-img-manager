@@ -47,7 +47,7 @@
 		}
 
 		if($isValid!=0){
-			if(move_uploaded_file($_FILES["upload-file"][tmp_name], $target_file)){
+			if(move_uploaded_file($_FILES["upload-file"]['tmp_name'], $target_file)){
 				// image uploaded fine
 
 				$sql="insert into UPLOADED_IMAGES (date,name,location) values (".time().",".$target_name.",".$dir.")";

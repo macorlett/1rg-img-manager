@@ -9,6 +9,7 @@
 
 		// setup image directory if one doesn't exist
 		if(!file_exists($dir)){
+			print "making dir...";
 			$oldmask=umask(0);
 			mkdir($dir,0744);
 		}

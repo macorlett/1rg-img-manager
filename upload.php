@@ -50,13 +50,13 @@
 			if(move_uploaded_file($_FILES["upload-file"]['tmp_name'], $target_file)){
 				// image uploaded fine
 
-				$sql="insert into UPLOADED_IMAGES (date,name,location) values (".time().",".$target_name.",".$dir.")";
+				$sql="insert into UPLOADED_IMAGES (date,name,location) values ('".time()."','".$target_name."','".$dir."')";
 				if($db->query($sql)===TRUE){
 					// added to DB
 					echo "New record created successfully";
 				}else{
 					// failed to adde to DB
-					echo "Error: " . $sql . "<br>" . $conn->error;
+					echo "Error: " . $sql . "<br>" . $db->error;
 				}
 			}else{
 				// failed to upload image

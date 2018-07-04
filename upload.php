@@ -5,7 +5,7 @@
 	if($_SERVER['REQUEST_METHOD']=="POST"){
 		
 		// image directory
-		$dir='img_uploads/';
+		$dir='img_uploads';
 
 		// setup image directory if one doesn't exist
 		if(!file_exists($dir)){
@@ -15,7 +15,7 @@
 		}
 
 		$target_name=round(microtime(true)).'-'.basename($_FILES["upload-file"]["name"]);
-		$target_file=$dir.$target_name;
+		$target_file=$dir."/".$target_name;
 		$isValid=1;
 		$fileType=strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 

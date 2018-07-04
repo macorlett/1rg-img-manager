@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>macorlett - image management tool</title>
+
+	<link href="css/cropper.min.css" rel="stylesheet" type="text/css">
+	<link href="css/main.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+	<div class="image-viewer image-viewer--hide"></div>
+
+	<form class="form--img-upload" enctype="multipart/form-data">
+		<input id="file" type="file" name="upload-file" required>
+		<label class="file--label" for="file">Choose a image</label>
+		<button class="button--submit button--hide" type="submit">upload image</button>
+	</form>
+
+	<div id="message"></div>
+
+	<script type="text/javascript" src="js/cropper.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+	<script type="text/javascript">
+		$('#file').on("change",function(){
+			$('.button--submit').removeClass('button--hide');
+			$('.file--label').html("Change image");
+			previewImg(this);
+		});
+
+		function previewImg(input){
+			if(input.files && input.files[0]){
+				
+				var reader=new FileReader();
+				
+				reader.onload=function(e){
+					$(".image-viewer").html('<div class="image-viewer--img-overlay"></div><img src="'+e.target.result+'" alt="Preview Image" />');
+					$(".image-viewer").removeClass('image-viewer--hide');
+				}
+
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+
+		$('.form--img-upload').submit(function(e){
+			e.preventDefault();
+
+			$('.form--img-upload').addClass('form--img-upload--hide');
+			$('.image-viewer--img-overlay').addClass('image-viewer--img-overlay--hide');
+
+			setTimeout(function() {
+				$('.form--img-upload').css('display','none');
+				$('.image-viewer').addClass('image-viewer--shrink');
+			}, 500);
+
+			$.ajax({
+				type: 'POST',
+				url: '',
+				data: new FormData(this),
+				contentType: false,
+				cache: false,
+				processData: false,
+				success: function(data){
+					$('#message').html(data);
+				}
+			});
+		});
+	</script>
+</body>
+</html>
